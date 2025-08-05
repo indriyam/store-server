@@ -3790,10 +3790,10 @@ var corsOptions = {
 };
 var app = express9();
 var MONGODB_URI = `mongodb+srv://${env_default.MONGO_USER}:${env_default.MONGO_PASSWORD}@cluster0.q4wsrjb.mongodb.net/${env_default.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority&appName=Cluster0`;
-app.use(cookieParser(env_default.JWT_KEY));
-var httpServer = http.createServer(app);
 var { json } = bodyparser;
 app.use(json());
+app.use(cookieParser(env_default.JWT_KEY));
+var httpServer = http.createServer(app);
 app.use(cors(corsOptions));
 app.use(
   session({
